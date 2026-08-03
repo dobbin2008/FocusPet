@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FocusPet</title>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/1style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+        <a href="{{ url_for('main.index') }}">PET</a>
+        <a href="{{ url_for('main.dashboard') }}">AGENDA</a>
+
+        <div class="menuDir">
+
+            <a id="loginBtn" class="conta" href="{{ url_for('auth.login') }}">
+                <span class="material-symbols-outlined">account_circle</span>
+            </a>
+
+            <div class="logo">
+                FOCUSPET
+            </div>
+
+            <button id="temaBtn" type="button">☀️</button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<main class="home-main">
+
+    <aside class="ranking">
+        <h3>Ranking dos amigos com pets com mais XP</h3>
+    </aside>
+
+    <section class="pet">
+        <h1>Mirosvaldo</h1>
+        <img src="{{ url_for('static', filename='img/image-removebg-preview.png') }}" alt="Pet" class="pet2">
+
+        <div class="xp">
+            <span class="xp span">XP</span>
+            <div class="barra">
+                <div class="progresso"></div>
+            </div>
+        </div>
+
+        <p>0 / 300 XP</p>
+        <button id="focoBtn" type="button">ATIVAR MODO FOCO</button>
+    </section>
+
+    <aside class="dados">
+        <h3>Dashboard do Pet</h3>
+        <p>Idade: 230 dias</p>
+        <p>Humor: Feliz</p>
+        <p>Saúde: Excelente</p>
+        <p>Área: Contabilidade</p>
+    </aside>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

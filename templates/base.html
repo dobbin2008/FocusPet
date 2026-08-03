@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}FocusPet{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/1style.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="{{ url_for('main.index') }}">PET</a>
+        <a href="{{ url_for('main.dashboard') }}">AGENDA</a>
+
+        <div class="menuDir">
+          <a id="loginBtn" class="conta" href="{{ url_for('auth.login') }}" aria-label="Entrar">
+            <span class="material-symbols-outlined">account_circle</span>
+          </a>
+
+          <div class="logo">FOCUSPET</div>
+          <button id="temaBtn" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

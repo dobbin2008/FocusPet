@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - FocusPet{% endblock %}
+
+{% block content %}
+  <section class="auth-shell">
+    <div class="modal active">
+      <div class="modal2">
+        <h1>FocusPet</h1>
+        <p class="auth-subtitle">Acesse o painel de administração ou continue no site.</p>
+
+        <form method="post">
+          <input type="email" name="email" placeholder="Digite seu e-mail" required>
+          <input type="password" name="senha" maxlength="8" placeholder="Digite sua senha" required>
+
+          <div class="auth-actions">
+            <button type="submit" class="loginBtn2" name="next" value="site">Entrar no site</button>
+            <button type="submit" class="loginBtn2 secondary" name="next" value="admin">Entrar no admin</button>
+          </div>
+        </form>
+
+        <div class="auth-links">
+          <a href="{{ url_for('auth.cadastro') }}">Criar conta</a>
+          <a href="{{ url_for('main.index') }}">Voltar ao site</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

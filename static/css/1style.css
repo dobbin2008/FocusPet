@@ -1,0 +1,574 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    background:#000814;
+    color:#fff;
+    transition:.35s;
+}
+
+body a {
+    color: inherit;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.page-content {
+    padding: 24px 20px 40px;
+    min-height: calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.home-main {
+    display:grid;
+    grid-template-columns:220px 1fr 220px;
+    align-items:start;
+    gap:40px;
+    padding:35px 60px;
+}
+
+/* HEADER */
+
+header{
+    background:#1565ff;
+    height:70px;
+    display:flex;
+    align-items:center;
+    padding:0 30px;
+}
+
+nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+
+nav>a{
+    width:170px;
+    text-align:center;
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav>a:hover{
+    opacity:.8;
+}
+
+/* MENU DA DIREITA */
+
+.menuDir{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:34px;
+    font-weight:700;
+    color:#fff;
+}
+
+.conta{
+    border:none;
+    background:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+.material-symbols-outlined{
+    font-size:34px;
+}
+
+/* BOTÃO DARK MODE*/
+
+#temaBtn{
+    border:none;
+    background:transparent;
+    cursor:pointer;
+    font-size:25px;
+    transition:.3s;
+}
+
+#temaBtn:hover{
+    transform:rotate(25deg) scale(1.15);
+}
+
+/* MENU */
+
+main{
+    display:grid;
+    grid-template-columns:220px 1fr 220px;
+    align-items:start;
+    gap:40px;
+    padding:35px 60px;
+}
+
+/* CARDS LATERAIS */
+
+.ranking,
+.dados{
+    width:180px;
+    min-height:350px;
+    background:#3792e7;
+    border-radius:14px;
+    padding:18px;
+    margin-top:55px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.ranking h3,
+.dados h3{
+    font-size:20px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.dados p{
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+/* ÁREA DO PET */
+
+.pet{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:70px; 
+}
+
+.pet h1{
+    font-size:58px;
+    font-weight:700;
+    margin-bottom:0;
+}
+
+.pet2{
+    width:190px;
+    margin-bottom:0;
+    transition:.3s;
+}
+
+.pet2:hover{
+    transform:scale(1.04);
+}
+
+/* XP */
+
+.xp{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:0;
+}
+
+.xp span{
+    font-weight:600;
+}
+
+.barra{
+    width:320px;
+    height:20px;
+    background:#ffffff;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progresso{
+    width:0%;
+    height:100%;
+    background:#1565ff;
+    border-radius:999px;
+    transition:.4s;
+}
+
+.pet p{
+    margin-bottom:0;
+    font-size:15px;
+}
+
+/* BOTÃO FOCO */
+
+#focoBtn{
+    background:#1565ff;
+    color:#fff;
+    border:none;
+    padding:15px 35px;
+    font-size:20px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#focoBtn:hover{
+    transform:translateY(-2px);
+    background:#2d76ff;
+}
+
+/*FOOTER*/
+
+footer{
+    text-align:center;
+    margin:70px 0 25px;
+    font-size:18px;
+    font-style:italic;
+    opacity:.85;
+}
+
+/* MODAL LOGIN */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:999;
+}
+
+.modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* LOGIN */
+
+.modal2{
+    width:min(420px, 92vw);
+    background:#1565ff;
+    border-radius:22px;
+    padding:35px;
+    position:relative;
+    transform:scale(.9);
+    transition:.3s;
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
+    margin:0 auto;
+}
+
+.modal.active .modal2{
+    transform:scale(1);
+}
+
+.modal2 h1{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:34px;
+    color:white;
+}
+
+.auth-subtitle {
+    text-align:center;
+    margin-bottom:24px;
+    color:rgba(255,255,255,.85);
+}
+
+.modal2 form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.modal2 input{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+}
+
+.modal2 input:focus{
+    box-shadow:0 0 0 3px rgba(255,255,255,.35);
+}
+
+.loginBtn2{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:#1565ff;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.loginBtn2:hover{
+    transform:translateY(-2px);
+    background:#ececec;
+}
+
+.loginBtn2.secondary {
+    background:#0d2e6b;
+    color:white;
+}
+
+.loginBtn2.secondary:hover {
+    background:#133c8a;
+}
+
+.auth-actions {
+    display:grid;
+    gap:10px;
+}
+
+.auth-actions button {
+    width:100%;
+}
+
+.auth-links {
+    display:flex;
+    justify-content:space-between;
+    margin-top:16px;
+    font-size:14px;
+}
+
+.auth-links a {
+    color:white;
+    text-decoration:none;
+}
+
+.auth-shell {
+    width:100%;
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.auth-shell .modal {
+    position:relative;
+    inset:auto;
+    opacity:1;
+    visibility:visible;
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    width:100%;
+    justify-content:center;
+}
+
+.panel-shell {
+    background:#0f1f3a;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+
+.panel-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.panel-header h1 {
+    font-size:28px;
+    margin-bottom:4px;
+}
+
+.panel-header p {
+    color:rgba(255,255,255,.75);
+}
+
+.panel-link {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 16px;
+    border-radius:999px;
+    background:#1565ff;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.admin-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:18px;
+}
+
+.admin-section {
+    background:#13284f;
+    border-radius:20px;
+    padding:18px;
+}
+
+.admin-section h2 {
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.admin-section form {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.admin-section input,
+.admin-section button {
+    border-radius:12px;
+    border:none;
+    padding:12px 14px;
+}
+
+.admin-section button {
+    cursor:pointer;
+    background:#1565ff;
+    color:white;
+    font-weight:600;
+}
+
+.admin-section button:hover {
+    background:#2d76ff;
+}
+
+.admin-list {
+    list-style:none;
+    display:grid;
+    gap:10px;
+}
+
+.admin-list li {
+    background:#0d1e3b;
+    padding:10px 12px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.danger-btn {
+    background:#d62839 !important;
+}
+
+.danger-btn:hover {
+    background:#ef233c !important;
+}
+
+/* BOTÃO FECHAR */
+
+.fecharBtn{
+    position:absolute;
+    top:15px;
+    right:18px;
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.fecharBtn:hover{
+    background:rgba(255,255,255,.3);
+    transform:rotate(90deg);
+}
+
+/* MODO CLARO */
+
+.claro{
+    background:#edf4ff;
+    color:#222;
+}
+
+.claro header{
+    background:#4d8cff;
+}
+
+.claro .ranking,
+.claro .dados{
+    background:#7db7ff;
+}
+
+.claro .barra{
+    background:#dcdcdc;
+}
+
+.claro .progresso{
+    background:#1565ff;
+}
+
+.claro .modal2{
+    background:#5b95ff;
+}
+
+.claro .loginBtn{
+    background:rgb(230, 224, 200);
+    color:#1565ff;
+}
+
+.claro .logo,
+.claro nav>a,
+.claro .material-symbols-outlined{
+    color:white;
+}
+
+.claro .barra{
+    background:#5b95ff;
+}
+
+.claro .progresso{
+    background:white;
+}
+
+/* RESPONSIVO */
+
+@media (max-width:768px){
+
+    main{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        padding:25px;
+    }
+
+    .ranking,
+    .dados{
+        width:90%;
+        margin-top:20px;
+        align-items:center;
+    }
+
+    .pet h1{
+        font-size:40px;
+    }
+
+    .barra{
+        width:220px;
+    }
+
+    .modal2{
+        width:90%;
+    }
+
+}
