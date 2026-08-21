@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FocusPet</title>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/1style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+        <a href="{{ url_for('main.index') }}">PET</a>
+        <a href="{{ url_for('agenda.agenda_page') }}">AGENDA</a>
+
+        <div class="menuDir">
+
+            <a id="loginBtn" class="conta" href="{{ url_for('auth.login') }}">
+                <span class="material-symbols-outlined">account_circle</span>
+            </a>
+
+            <div class="logo">
+                FOCUSPET
+            </div>
+
+            <a class="logout-btn" href="{{ url_for('auth.logout') }}">Sair</a>
+            <button id="temaBtn" type="button">☀️</button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<main class="home-main">
+
+    <aside class="ranking">
+        <h3>Ranking dos amigos com pets com mais XP</h3>
+    </aside>
+
+    <section class="pet">
+        <h1>Mirosvaldo</h1>
+        <img src="{{ url_for('static', filename='img/image-removebg-preview.png') }}" alt="Pet" class="pet2">
+
+        <div class="xp">
+            <span class="xp span">XP</span>
+            <div class="barra">
+                <div class="progresso"></div>
+            </div>
+        </div>
+
+        <p>0 / 300 XP</p>
+        
+        <!-- SEÇÃO DE MODO FOCO -->
+        <div id="focoSection" class="foco-section">
+            <button id="focoBtn" type="button" class="foco-btn">ATIVAR MODO FOCO</button>
+            
+            <!-- Cronômetro -->
+            <div id="cronometroContainer" class="cronometro-container" style="display: none;">
+                <div class="cronometro">
+                    <span id="cronometroTempo">00:00:00</span>
+                </div>
+                <div class="info-foco">
+                    <p>Vezes distraído: <span id="vezesDistraido">0</span></p>
+                </div>
+                <button id="encerrarFocoBtn" type="button" class="encerrar-foco-btn">ENCERRAR SESSÃO</button>
+            </div>
+        </div>
+    </section>
+
+    <aside class="dados">
+        <h3>Dashboard do Pet</h3>
+        <p>Idade: 230 dias</p>
+        <p>Humor: Feliz</p>
+        <p>Saúde: Excelente</p>
+        <p>Área: Contabilidade</p>
+    </aside>
+
+    <!-- LISTA BLOQUEADA - CANTO INFERIOR ESQUERDO -->
+    <section class="lista-bloqueada">
+        <h3>🚫 Sites Bloqueados</h3>
+        
+        <div class="adicionar-site">
+            <input type="url" id="novoSite" placeholder="https://exemplo.com" />
+            <input type="text" id="descricaoSite" placeholder="Descrição (opcional)" />
+            <button id="adicionarSiteBtn" type="button" class="btn-adicionar">Adicionar</button>
+        </div>
+
+        <div id="listaSitesContainer" class="lista-sites">
+            <!-- Sites serão adicionados dinamicamente aqui -->
+        </div>
+
+        <div id="mensagemBlacklist" class="mensagem-blacklist" style="display: none;"></div>
+    </section>
+
+    <section class="bloco-notas-acesso">
+        <button id="abrirNotasBtn" type="button" class="notas-btn">Bloco de notas</button>
+        <p>Atalho: <kbd id="atalhoNotasResumo">CTRL + Y</kbd></p>
+        <button id="configurarAtalhoBtn" type="button" class="atalho-btn">Alterar atalho</button>
+    </section>
+
+    <section class="atividades-principais">
+        <div class="atividades-titulo">
+            <h2>Próximas atividades</h2>
+            <a href="{{ url_for('agenda.agenda_page') }}">Ver agenda</a>
+        </div>
+        <div id="atividadesLista" class="atividades-lista">
+            <p>Carregando atividades...</p>
+        </div>
+    </section>
+
+</main>
+
+<div id="notasModal" class="notas-modal" role="dialog" aria-modal="true" aria-labelledby="notasTitulo" aria-hidden="true">
+    <section class="notas-painel">
+        <div class="notas-cabecalho">
+            <h2 id="notasTitulo">Bloco de notas</h2>
+            <button id="fecharNotasBtn" type="button" class="fechar-notas" aria-label="Fechar bloco de notas">&times;</button>
+        </div>
+        <textarea id="conteudoNotas" placeholder="Escreva uma ideia, uma dúvida ou o próximo passo..."></textarea>
+        <div class="notas-rodape">
+            <span id="statusNotas">Salvo automaticamente</span>
+            <button id="salvarNotasBtn" type="button" class="notas-btn">Salvar</button>
+        </div>
+        <div id="configuracaoAtalho" class="configuracao-atalho" hidden>
+            <label for="capturaAtalho">Pressione a combinação desejada</label>
+            <input id="capturaAtalho" type="text" readonly placeholder="Ex.: CTRL + SHIFT + N">
+            <button id="salvarAtalhoBtn" type="button" class="atalho-btn">Usar este atalho</button>
+        </div>
+    </section>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

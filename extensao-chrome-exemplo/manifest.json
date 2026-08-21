@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "FocusPet Blocker",
+  "version": "1.0.0",
+  "description": "Bloqueador de sites para FocusPet - Mantenha o foco durante sessões de estudo",
+  "author": "FocusPet Team",
+  
+  "permissions": [
+    "webNavigation",
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FocusPet Blocker - Clique para ver status",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "commands": {
+    "abrir_bloco_notas": {
+      "suggested_key": {
+        "default": "Ctrl+Y"
+      },
+      "description": "Abrir o bloco de notas do FocusPet"
+    }
+  },
+  
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["bloqueado.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "omnibox": {
+    "keyword": "focuspet"
+  }
+}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Agenda - FocusPet{% endblock %}
+
+{% block content %}
+<section class="agenda-page">
+    <div class="agenda-header">
+        <div>
+            <p class="eyebrow">Planejamento de estudos</p>
+            <h1>Minha agenda</h1>
+        </div>
+        <a class="panel-link" href="{{ url_for('main.index') }}">Voltar ao pet</a>
+    </div>
+
+    <div class="agenda-layout">
+        <section class="calendario-panel">
+            <div class="calendario-controles">
+                <button id="mesAnteriorBtn" type="button" aria-label="Mês anterior">&lsaquo;</button>
+                <h2 id="mesAtual">Carregando...</h2>
+                <button id="proximoMesBtn" type="button" aria-label="Próximo mês">&rsaquo;</button>
+            </div>
+            <div class="ano-controle">
+                <label for="anoCalendario">Ano</label>
+                <input id="anoCalendario" type="number" min="2000" max="2100">
+            </div>
+            <div class="dias-semana">
+                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div id="calendario" class="calendario-grid"></div>
+        </section>
+
+        <aside class="agenda-form-panel">
+            <h2>Nova atividade</h2>
+            <p id="dataSelecionadaTexto">Selecione um dia no calendário.</p>
+            <form id="atividadeForm">
+                <input id="dataAtividade" type="hidden">
+                <label for="tituloAtividade">O que você vai estudar?</label>
+                <input id="tituloAtividade" type="text" maxlength="200" required placeholder="Ex.: Revisar matemática">
+                <label for="duracaoAtividade">Duração (minutos)</label>
+                <input id="duracaoAtividade" type="number" min="0" value="30" required>
+                <button class="notas-btn" type="submit">Adicionar atividade</button>
+            </form>
+            <p id="agendaMensagem" class="agenda-mensagem" role="status"></p>
+        </aside>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/agenda.js') }}"></script>
+{% endblock %}
