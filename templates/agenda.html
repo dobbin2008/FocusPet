@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda - FocusPet</title>
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">PET</a>
+        <a href="/agenda">AGENDA</a>
+        <div class="menuDir">
+            <a id="loginBtn" class="conta" href="/login" aria-label="Entrar"><span class="material-symbols-outlined">account_circle</span></a>
+            <div class="logo">FOCUSPET</div>
+            <button id="temaBtn" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+<section class="agenda-page">
+    <div class="agenda-header">
+        <div>
+            <p class="eyebrow">Planejamento de estudos</p>
+            <h1>Minha agenda</h1>
+        </div>
+        <a class="panel-link" href="/">Voltar ao pet</a>
+    </div>
+
+    <div class="agenda-layout">
+        <section class="calendario-panel">
+            <div class="calendario-controles">
+                <button id="mesAnteriorBtn" type="button" aria-label="Mês anterior">&lsaquo;</button>
+                <h2 id="mesAtual">Carregando...</h2>
+                <button id="proximoMesBtn" type="button" aria-label="Próximo mês">&rsaquo;</button>
+            </div>
+            <div class="ano-controle">
+                <label for="anoCalendario">Ano</label>
+                <input id="anoCalendario" type="number" min="2000" max="2100">
+            </div>
+            <div class="dias-semana">
+                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div id="calendario" class="calendario-grid"></div>
+        </section>
+
+        <aside class="agenda-form-panel">
+            <h2>Nova atividade</h2>
+            <p id="dataSelecionadaTexto">Selecione um dia no calendário.</p>
+            <form id="atividadeForm">
+                <input id="dataAtividade" type="hidden">
+                <label for="tituloAtividade">O que você vai estudar?</label>
+                <input id="tituloAtividade" type="text" maxlength="200" required placeholder="Ex.: Revisar matemática">
+                <label for="duracaoAtividade">Duração (minutos)</label>
+                <input id="duracaoAtividade" type="number" min="0" value="30" required>
+                <button class="notas-btn" type="submit">Adicionar atividade</button>
+            </form>
+            <p id="agendaMensagem" class="agenda-mensagem" role="status"></p>
+        </aside>
+    </div>
+</section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/agenda.js"></script>
+</body>
+</html>

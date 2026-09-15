@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Bloqueado - FocusPet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid #f44336;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .icone {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #f44336;
+        }
+        
+        .subtitulo {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .motivo {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px dashed #f44336;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .motivo strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #f44336;
+        }
+        
+        .url-bloqueada {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            word-break: break-all;
+            margin: 10px 0;
+            color: #64b5f6;
+        }
+        
+        .dica {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 13px;
+        }
+        
+        .dica strong {
+            color: #4caf50;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            gap: 15px;
+        }
+        
+        .stat {
+            background: rgba(21, 101, 255, 0.2);
+            border: 2px solid #1565ff;
+            border-radius: 12px;
+            padding: 15px;
+            flex: 1;
+        }
+        
+        .stat strong {
+            display: block;
+            font-size: 24px;
+            color: #1565ff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .botoes {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            flex-direction: column;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn-voltar {
+            background: #1565ff;
+            color: white;
+        }
+        
+        .btn-voltar:hover {
+            background: #2d76ff;
+            transform: translateY(-2px);
+        }
+        
+        .btn-fechar {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-fechar:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .countdown {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f44336, #ff9800, #f44336);
+            animation: progress 3s ease-in-out forwards;
+        }
+        
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="icone">🚫</div>
+    
+    <h1>Acesso Bloqueado</h1>
+    <p class="subtitulo">Você está em uma sessão de Modo Foco</p>
+    
+    <div class="motivo">
+        <strong>📍 Por que este site está bloqueado?</strong>
+        <p>Você adicionou este site à sua lista de bloqueio para ajudar a manter o foco durante seus estudos.</p>
+        <div class="url-bloqueada" id="urlBloqueada">https://exemplo.com</div>
+    </div>
+    
+    <div class="timer">
+        <div class="stat">
+            <strong id="tempoEstudado">0 min</strong>
+            <div class="stat-label">Tempo Estudado</div>
+        </div>
+        <div class="stat">
+            <strong id="vezesDistraido">0</strong>
+            <div class="stat-label">Distrações</div>
+        </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+    
+    <div class="dica">
+        <strong>💡 Dica:</strong>
+        Mantenha o foco! Quanto mais tempo você se concentrar, mais XP seu pet ganhará e mais rápido evoluirá.
+    </div>
+    
+    <div class="botoes">
+        <button class="btn-voltar" onclick="voltarAoEstudo()">
+            ✅ Continuar Estudando
+        </button>
+        <button class="btn-fechar" onclick="encerrarSessao()">
+            ❌ Encerrar Sessão de Foco
+        </button>
+    </div>
+    
+    <div class="countdown">
+        <p id="mensagemTempo">Esta página fechará em 5 segundos...</p>
+    </div>
+    
+    <div class="footer">
+        <p>🎓 FocusPet - Estudar com Foco e Diversão</p>
+        <p>v1.0.0</p>
+    </div>
+</div>
+
+<script>
+// ============================================
+// BLOQUEADO.HTML - JAVASCRIPT
+// ============================================
+
+// Pegar parâmetros da URL
+const params = new URLSearchParams(window.location.search);
+const urlBloqueada = params.get("url") || "Desconhecida";
+const sessoesId = params.get("sessoesId");
+
+document.getElementById("urlBloqueada").textContent = urlBloqueada;
+
+document.getElementById("mensagemTempo").textContent = "";
+
+async function registrarDistraicao() {
+    if (!sessoesId) return;
+
+    try {
+        const resposta = await fetch(`http://localhost:5000/api/foco/registrar-distracao/${sessoesId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
+        const dados = await resposta.json();
+        if (dados.sucesso) {
+            document.getElementById("vezesDistraido").textContent = dados.vezes_distraido;
+        }
+    } catch (erro) {
+        console.warn("Não foi possível registrar a distração no FocusPet:", erro);
+    }
+}
+
+async function atualizarSessao() {
+    if (!sessoesId) return;
+
+    try {
+        const resposta = await fetch(`http://localhost:5000/api/foco/status/${sessoesId}`);
+        const dados = await resposta.json();
+        if (dados.sucesso) {
+            document.getElementById("tempoEstudado").textContent = `${dados.tempo_total_minutos ?? 0} min`;
+            document.getElementById("vezesDistraido").textContent = dados.vezes_distraido ?? 0;
+        }
+    } catch (erro) {
+        console.warn("Não foi possível buscar o status da sessão:", erro);
+    }
+}
+
+function voltarAoEstudo() {
+    try {
+        chrome.tabs.getCurrent((tab) => {
+            if (tab && tab.id) {
+                chrome.tabs.remove(tab.id);
+                return;
+            }
+            window.close();
+        });
+    } catch (erro) {
+        window.close();
+    }
+}
+
+async function encerrarSessao() {
+    if (!sessoesId) {
+        voltarAoEstudo();
+        return;
+    }
+
+    const confirmar = window.confirm("Deseja encerrar a sessão de Modo Foco agora?");
+    if (!confirmar) return;
+
+    try {
+        await fetch(`http://localhost:5000/api/foco/encerrar/${sessoesId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        try {
+            chrome.runtime.sendMessage({ tipo: "DESATIVAR_BLOQUEIO" });
+        } catch (erro) {
+            console.warn("Falha ao comunicar com extensão:", erro);
+        }
+    } catch (erro) {
+        console.warn("Erro ao encerrar sessão no FocusPet:", erro);
+    }
+
+    voltarAoEstudo();
+}
+
+registrarDistraicao();
+setInterval(atualizarSessao, 2000);
+
+// Prevenir volta com back
+history.pushState(null, null, location.href);
+window.onpopstate = function() {
+    history.pushState(null, null, location.href);
+};
+
+console.log("[Bloqueado] Página carregada");
+console.log("[Bloqueado] URL bloqueada:", urlBloqueada);
+console.log("[Bloqueado] Sessão ID:", sessoesId);
+</script>
+
+</body>
+</html>

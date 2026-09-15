@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Pets</title>
+  <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<main class="page-content">
+  <section class="card">
+    <h1>Pets</h1>
+    <form method="post">
+      <label>Nome</label>
+      <input type="text" name="nome" required>
+      <button type="submit">Criar pet</button>
+    </form>
+
+    <ul id="petsLista"></ul>
+
+    <p><a href="/admin/">Voltar</a></p>
+  </section>
+</main>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>

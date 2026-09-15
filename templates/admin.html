@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - FocusPet</title>
+  <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/">PET</a>
+    <a href="/agenda">AGENDA</a>
+    <div class="menuDir">
+      <a id="loginBtn" class="conta" href="/login" aria-label="Entrar"><span class="material-symbols-outlined">account_circle</span></a>
+      <div class="logo">FOCUSPET</div>
+      <button id="temaBtn" type="button" aria-label="Alternar tema">☀️</button>
+    </div>
+  </nav>
+</header>
+<main class="page-content">
+  <section class="panel-shell">
+    <div class="panel-header">
+      <div>
+        <h1>Painel de Administração</h1>
+        <p>Gerencie estudantes, pets e tribos com o mesmo visual do site.</p>
+      </div>
+      <a class="panel-link" href="/">Voltar ao site</a>
+    </div>
+
+    <div class="admin-grid">
+      <div class="admin-section">
+        <h2>1. Cadastrar estudante</h2>
+        <form method="post">
+          <input type="hidden" name="action" value="criar_estudante">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="senha" placeholder="Senha" required>
+          <button type="submit">Criar estudante</button>
+        </form>
+        <ul id="estudantesLista" class="admin-list"></ul>
+      </div>
+
+      <div class="admin-section">
+        <h2>2. Cadastrar pet</h2>
+        <form method="post">
+          <input type="hidden" name="action" value="criar_pet">
+          <input type="text" name="nome" placeholder="Nome do pet" required>
+          <button type="submit">Criar pet</button>
+        </form>
+        <ul id="petsLista" class="admin-list"></ul>
+      </div>
+
+      <div class="admin-section">
+        <h2>3. Cadastrar tribo</h2>
+        <form method="post">
+          <input type="hidden" name="action" value="criar_tribo">
+          <input type="text" name="materia" placeholder="Nome da matéria" required>
+          <button type="submit">Criar tribo</button>
+        </form>
+        <ul id="tribosLista" class="admin-list"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>
