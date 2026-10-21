@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resumo semanal - Study Buddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <a class="site-brand" href="/" aria-label="Study Buddy - início">
+            <span class="site-brand-mark" aria-hidden="true">S</span>
+            <span>Study Buddy</span>
+        </a>
+        <div class="site-links">
+            <a href="/">Início</a>
+            <a href="/agenda">Agenda</a>
+            <a href="/materias">Matérias</a>
+            <a href="/historico-foco">Histórico</a>
+            <a href="/metas">Metas</a>
+            <a href="/resumo" aria-current="page">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+            <a id="loginBtn" class="account-link" href="/perfil" aria-label="Meu perfil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+                <span>Perfil</span>
+            </a>
+            <a id="logoutBtn" class="logout-btn" href="/login">Sair</a>
+            <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+    <section class="weekly-summary" aria-labelledby="summaryTitle">
+        <p class="eyebrow">Sua evolução</p>
+        <h1 id="summaryTitle">Resumo semanal</h1>
+        <p id="summaryPeriod" class="summary-period">Carregando período...</p>
+        <p id="summaryMessage" class="agenda-mensagem" role="status" aria-live="polite"></p>
+        <div id="summaryMetrics" class="summary-metrics" hidden>
+            <article class="summary-metric">
+                <span>Tempo estudado</span>
+                <strong id="summaryHours">—</strong>
+            </article>
+            <article class="summary-metric">
+                <span>XP ganho nesta semana</span>
+                <strong id="summaryXp">—</strong>
+            </article>
+            <article class="summary-metric">
+                <span>Distrações</span>
+                <strong id="summaryDistractions">—</strong>
+            </article>
+            <article class="summary-metric">
+                <span>XP do pet equipado</span>
+                <strong id="summaryPetXp">—</strong>
+            </article>
+        </div>
+        <a class="panel-link summary-back" href="/">Voltar ao início</a>
+    </section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/summary.js"></script>
+</body>
+</html>

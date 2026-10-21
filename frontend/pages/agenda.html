@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda - Study Buddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <a class="site-brand" href="/" aria-label="Study Buddy - início">
+            <span class="site-brand-mark" aria-hidden="true">S</span>
+            <span>Study Buddy</span>
+        </a>
+        <div class="site-links">
+            <a href="/">Início</a>
+            <a href="/agenda" aria-current="page">Agenda</a>
+            <a href="/materias">Matérias</a>
+            <a href="/historico-foco">Histórico</a>
+            <a href="/metas">Metas</a>
+            <a href="/resumo">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+            <a id="loginBtn" class="account-link" href="/perfil" aria-label="Meu perfil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+                <span>Perfil</span>
+            </a>
+            <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+<section class="agenda-page">
+    <div class="agenda-header">
+        <div>
+            <p class="eyebrow">Planejamento de estudos</p>
+            <h1>Minha agenda</h1>
+        </div>
+        <a class="panel-link" href="/">Voltar ao pet</a>
+    </div>
+
+    <div class="agenda-layout">
+        <section class="calendario-panel">
+            <div class="calendario-controles">
+                <button id="mesAnteriorBtn" type="button" aria-label="Mês anterior">&lsaquo;</button>
+                <h2 id="mesAtual">Carregando...</h2>
+                <button id="proximoMesBtn" type="button" aria-label="Próximo mês">&rsaquo;</button>
+            </div>
+            <div class="ano-controle">
+                <label for="anoCalendario">Ano</label>
+                <input id="anoCalendario" type="number" min="2000" max="2100">
+            </div>
+            <div class="dias-semana">
+                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div id="calendario" class="calendario-grid"></div>
+        </section>
+
+        <aside class="agenda-form-panel">
+            <h2>Nova atividade</h2>
+            <p id="dataSelecionadaTexto">Selecione um dia no calendário.</p>
+            <form id="atividadeForm">
+                <input id="dataAtividade" type="hidden">
+                <label for="tituloAtividade">O que você vai estudar?</label>
+                <input id="tituloAtividade" type="text" maxlength="200" required placeholder="Ex.: Revisar matemática">
+                <label for="duracaoAtividade">Duração (minutos)</label>
+                <input id="duracaoAtividade" type="number" min="0" value="30" required>
+                <label class="lembrete-opcao" for="lembreteAtividade">
+                    <input id="lembreteAtividade" type="checkbox">
+                    Quero receber um lembrete
+                </label>
+                <div id="lembreteCampos" class="lembrete-campos" hidden>
+                    <label for="dataHoraLembrete">Dia e hora do lembrete</label>
+                    <input id="dataHoraLembrete" type="datetime-local" disabled>
+                    <small>O navegador precisa permitir notificações e esta página da agenda deve ficar aberta.</small>
+                </div>
+                <p id="notificacaoStatus" class="notificacao-status" role="status" aria-live="polite"></p>
+                <button class="notas-btn" type="submit">Adicionar atividade</button>
+            </form>
+            <p id="agendaMensagem" class="agenda-mensagem" role="status"></p>
+        </aside>
+    </div>
+</section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/agenda.js"></script>
+</body>
+</html>

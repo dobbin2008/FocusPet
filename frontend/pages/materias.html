@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matérias - Study Buddy</title>
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <a class="site-brand" href="/" aria-label="Study Buddy - início">
+            <span class="site-brand-mark" aria-hidden="true">S</span>
+            <span>Study Buddy</span>
+        </a>
+        <div class="site-links">
+            <a href="/">Início</a>
+            <a href="/agenda">Agenda</a>
+            <a href="/materias" aria-current="page">Matérias</a>
+            <a href="/historico-foco">Histórico</a>
+            <a href="/metas">Metas</a>
+            <a href="/resumo">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+            <a class="account-link" href="/perfil" aria-label="Meu perfil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+                <span>Perfil</span>
+            </a>
+            <a id="logoutBtn" class="logout-btn" href="/login">Sair</a>
+            <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+    <section class="materias-page" aria-labelledby="materiasTitulo">
+        <p class="eyebrow">Organize seus estudos</p>
+        <h1 id="materiasTitulo">Minhas matérias</h1>
+        <p class="materias-intro">Cadastre suas matérias e acompanhe quanto estudou de cada uma nesta semana.</p>
+
+        <form id="materiaForm" class="materia-form">
+            <label for="nomeMateria">Nome da matéria</label>
+            <div class="materia-form-controls">
+                <input id="nomeMateria" name="nome" type="text" maxlength="80" required placeholder="Ex.: Matemática">
+                <button class="notas-btn" type="submit">Cadastrar matéria</button>
+            </div>
+        </form>
+        <p id="materiasMensagem" class="agenda-mensagem" role="status" aria-live="polite"></p>
+
+        <div class="materias-lista-heading">
+            <h2>Horas estudadas nesta semana</h2>
+            <span>As horas são registradas ao selecionar a matéria antes de iniciar o modo foco.</span>
+        </div>
+        <div id="materiasLista" class="materias-lista" aria-live="polite"></div>
+    </section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/materias.js"></script>
+</body>
+</html>
