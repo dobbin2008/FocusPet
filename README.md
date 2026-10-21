@@ -56,7 +56,7 @@ Study Buddy é uma aplicação web em Flask para apoiar o estudo com um companio
 
 ## Diagrama de classes
 
-O diagrama de classes atualizado está em [docs/diagrama_classes.md](docs/diagrama_classes.md). A imagem `FocusPet.drawio (1).png` na raiz é uma versão antiga e não representa todas as Models atuais.
+O diagrama de classes atualizado está em [docs/diagrama_classes.md](docs/diagrama_classes.md).
 
 ## Arquitetura dos casos de uso
 
