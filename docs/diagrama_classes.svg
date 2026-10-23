@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2200" viewBox="0 0 1800 2200" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Diagrama de classes do domínio Study Buddy</title>
+  <desc id="descricao">Diagrama das doze Models do Study Buddy, atributos principais, herança de CrudModel e relacionamentos com cardinalidades.</desc>
+  <defs>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #172b4d; }
+      .fundo { fill: #f3f6fb; }
+      .titulo { font-size: 38px; font-weight: 700; }
+      .subtitulo { font-size: 19px; fill: #52647d; }
+      .cartao { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .cabecalho { fill: #dcecff; }
+      .nome { font-size: 22px; font-weight: 700; }
+      .atributo { font-size: 17px; }
+      .muted { fill: #52647d; }
+      .painel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .painel-titulo { font-size: 25px; font-weight: 700; }
+      .relacao { font-size: 16px; }
+      .linha { stroke: #52759e; stroke-width: 2.5; }
+      .separador { stroke: #d8e1ec; stroke-width: 1; }
+      .pill { fill: #e9f6ef; }
+      .pill-text { font-size: 15px; font-weight: 600; fill: #17633a; }
+    </style>
+  </defs>
+  <rect class="fundo" width="1800" height="2200"/>
+  <text class="titulo" x="48" y="62">Diagrama de classes do domínio — Study Buddy</text>
+  <text class="subtitulo" x="48" y="98">Models, atributos persistidos relevantes e relacionamentos conforme as chaves estrangeiras do backend.</text>
+
+  <!-- Linha 1 -->
+  <g transform="translate(40 130)">
+    <rect class="cartao" width="550" height="282" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Estudante</text>
+    <text class="atributo" x="18" y="76">+ email: str [único]</text>
+    <text class="atributo" x="18" y="98">+ senha: hash</text>
+    <text class="atributo" x="18" y="120">+ nome_exibicao: str</text>
+    <text class="atributo" x="18" y="142">+ foto_perfil: str</text>
+    <text class="atributo" x="18" y="164">+ xp_total: int</text>
+    <text class="atributo" x="18" y="186">+ tema_de_cores: str</text>
+    <text class="atributo" x="18" y="208">+ assinatura: bool</text>
+    <text class="atributo" x="18" y="230">+ meta_diaria_minutos: int (legado)</text>
+    <text class="atributo" x="18" y="252">+ pet_equipado_id: int? (FK)</text>
+  </g>
+  <g transform="translate(625 130)">
+    <rect class="cartao" width="550" height="260" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Pet</text>
+    <text class="atributo" x="18" y="76">+ nome: str</text>
+    <text class="atributo" x="18" y="98">+ nivel: int</text>
+    <text class="atributo" x="18" y="120">+ linha_evolutiva: str</text>
+    <text class="atributo" x="18" y="142">+ descricao: str</text>
+    <text class="atributo" x="18" y="164">+ imagem: str</text>
+    <text class="atributo" x="18" y="186">+ imagem_nivel_1/2/3: str</text>
+    <text class="atributo" x="18" y="208">+ xp_atual: int</text>
+    <text class="atributo" x="18" y="230">+ eh_padrao: bool</text>
+    <text class="atributo" x="18" y="252">+ estudante_id: int? (FK)</text>
+  </g>
+  <g transform="translate(1210 130)">
+    <rect class="cartao" width="550" height="154" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">CrudModel (classe-base mixin)</text>
+    <text class="atributo" x="18" y="78">+ id: int [chave primária]</text>
+    <text class="atributo" x="18" y="100">+ salvar() · atualizar() · deletar()</text>
+    <text class="atributo" x="18" y="122">+ listar_todos() · buscar_por_id()</text>
+    <rect class="pill" x="18" y="132" width="410" height="20" rx="10"/>
+    <text class="pill-text" x="28" y="148">As Models de domínio também herdam de db.Model</text>
+  </g>
+
+  <!-- Linha 2 -->
+  <g transform="translate(40 440)">
+    <rect class="cartao" width="550" height="110" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Agenda</text>
+    <text class="atributo" x="18" y="78">+ data_atual: datetime</text>
+    <text class="atributo" x="18" y="100">+ estudante_id: int [único, FK]</text>
+  </g>
+  <g transform="translate(625 440)">
+    <rect class="cartao" width="550" height="282" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Estudo</text>
+    <text class="atributo" x="18" y="76">+ titulo: str</text>
+    <text class="atributo" x="18" y="98">+ inicio: datetime</text>
+    <text class="atributo" x="18" y="120">+ fim: datetime</text>
+    <text class="atributo" x="18" y="142">+ duracao_minutos: int</text>
+    <text class="atributo" x="18" y="164">+ concluido: bool</text>
+    <text class="atributo" x="18" y="186">+ arquivada: bool</text>
+    <text class="atributo" x="18" y="208">+ xp_ganho: int</text>
+    <text class="atributo" x="18" y="230">+ lembrete_em: datetime?</text>
+    <text class="atributo" x="18" y="252">+ agenda_id: int (FK)</text>
+    <text class="atributo" x="18" y="274">+ lembrete_notificado: bool</text>
+  </g>
+  <g transform="translate(1210 440)">
+    <rect class="cartao" width="550" height="260" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">SessaoFoco</text>
+    <text class="atributo" x="18" y="76">+ inicio / fim: datetime</text>
+    <text class="atributo" x="18" y="98">+ modo_ativo: bool</text>
+    <text class="atributo" x="18" y="120">+ vezes_distraido: int</text>
+    <text class="atributo" x="18" y="142">+ tempo_total_minutos: int</text>
+    <text class="atributo" x="18" y="164">+ xp_ganho: int</text>
+    <text class="atributo" x="18" y="186">+ xp_bonus_meta: int</text>
+    <text class="atributo" x="18" y="208">+ token_api: str? [único]</text>
+    <text class="atributo" x="18" y="230">+ estudante_id: int (FK)</text>
+    <text class="atributo" x="18" y="252">+ materia_id: int? (FK)</text>
+  </g>
+
+  <!-- Linha 3 -->
+  <g transform="translate(40 730)">
+    <rect class="cartao" width="550" height="110" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Materia</text>
+    <text class="atributo" x="18" y="78">+ nome: str</text>
+    <text class="atributo" x="18" y="100">+ estudante_id: int (FK)</text>
+  </g>
+  <g transform="translate(625 730)">
+    <rect class="cartao" width="550" height="110" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">ListaBloqueada</text>
+    <text class="atributo" x="18" y="78">+ url: str</text>
+    <text class="atributo" x="18" y="100">+ descricao: str? · estudante_id: FK</text>
+  </g>
+  <g transform="translate(1210 730)">
+    <rect class="cartao" width="550" height="110" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Nota</text>
+    <text class="atributo" x="18" y="78">+ titulo: str · conteudo: text</text>
+    <text class="atributo" x="18" y="100">+ estudante_id: int (FK)</text>
+  </g>
+
+  <!-- Linha 4 -->
+  <g transform="translate(40 880)">
+    <rect class="cartao" width="550" height="132" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">BlocoNotas (preferências/compatibilidade)</text>
+    <text class="atributo" x="18" y="78">+ conteudo: text · hotkey: str</text>
+    <text class="atributo" x="18" y="100">+ notas_migradas: bool</text>
+    <text class="atributo" x="18" y="122">+ estudante_id: int [único, FK]</text>
+  </g>
+  <g transform="translate(625 880)">
+    <rect class="cartao" width="550" height="132" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">MetaEstudo</text>
+    <text class="atributo" x="18" y="78">+ estudante_id: int [único, FK]</text>
+    <text class="atributo" x="18" y="100">+ meta_diaria_minutos: int</text>
+    <text class="atributo" x="18" y="122">+ meta_semanal_minutos/dias: int</text>
+  </g>
+  <g transform="translate(1210 880)">
+    <rect class="cartao" width="550" height="132" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">BonusMeta</text>
+    <text class="atributo" x="18" y="78">+ estudante_id: int (FK)</text>
+    <text class="atributo" x="18" y="100">+ tipo: str · periodo_inicio: date</text>
+    <text class="atributo" x="18" y="122">+ xp_ganho: int [unicidade por período]</text>
+  </g>
+
+  <!-- Linha 5 -->
+  <g transform="translate(40 1050)">
+    <rect class="cartao" width="550" height="154" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">ResumoSemanal</text>
+    <text class="atributo" x="18" y="78">+ data_inicio / data_fim: datetime</text>
+    <text class="atributo" x="18" y="100">+ horas_estudadas: float</text>
+    <text class="atributo" x="18" y="122">+ vezes_distraido: int</text>
+    <text class="atributo" x="18" y="144">+ progresso_pet: float · estudante_id: FK</text>
+  </g>
+  <g transform="translate(1210 1050)">
+    <rect class="cartao" width="550" height="154" rx="12"/>
+    <path class="cabecalho" d="M12 0h526a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="nome" x="18" y="33">Escopo do diagrama</text>
+    <text class="atributo" x="18" y="78">Modelagem da persistência do domínio.</text>
+    <text class="atributo" x="18" y="100">Tipos simplificados para facilitar leitura.</text>
+    <text class="atributo" x="18" y="122">? indica valor opcional; FK indica chave</text>
+    <text class="atributo" x="18" y="144">estrangeira. Atributos calculados foram omitidos.</text>
+  </g>
+
+  <g transform="translate(40 1240)">
+    <rect class="painel" width="1720" height="900" rx="14"/>
+    <text class="painel-titulo" x="28" y="44">Relacionamentos e cardinalidades</text>
+    <text class="subtitulo" x="28" y="75">As cardinalidades refletem as FKs e restrições únicas declaradas nas Models.</text>
+    <line class="separador" x1="28" y1="96" x2="1692" y2="96"/>
+    <line class="separador" x1="860" y1="112" x2="860" y2="786"/>
+    <text class="nome" x="32" y="132" font-size="18">Conta, pets e planejamento</text>
+    <text class="relacao" x="32" y="166">Estudante (0..1) ── (0..*) Pet · pet pode ter um estudante proprietário.</text>
+    <text class="relacao" x="32" y="198">Estudante (0..*) ── (0..1) Pet · pet equipado, via pet_equipado_id.</text>
+    <text class="relacao" x="32" y="230">Estudante (1) ── (0..1) Agenda · estudante_id é único em Agenda.</text>
+    <text class="relacao" x="32" y="262">Agenda (1) ◆── (0..*) Estudo · estudos pertencem à agenda.</text>
+    <text class="relacao" x="32" y="294">Estudante (1) ── (0..*) Materia · matérias são cadastradas pelo estudante.</text>
+    <text class="relacao" x="32" y="326">Materia (0..1) ── (0..*) SessaoFoco · matéria da sessão é opcional.</text>
+    <text class="relacao" x="32" y="358">Estudante (1) ── (0..*) SessaoFoco · sessões registram o estudante.</text>
+    <text class="nome" x="892" y="132" font-size="18">Preferências, notas e acompanhamento</text>
+    <text class="relacao" x="892" y="166">Estudante (1) ── (0..*) ListaBloqueada · lista de bloqueios da conta.</text>
+    <text class="relacao" x="892" y="198">Estudante (1) ── (0..1) BlocoNotas · preferências do atalho e conteúdo antigo.</text>
+    <text class="relacao" x="892" y="230">Estudante (1) ── (0..*) Nota · notas nomeadas do estudante.</text>
+    <text class="relacao" x="892" y="262">Estudante (1) ── (0..1) MetaEstudo · configuração única por estudante.</text>
+    <text class="relacao" x="892" y="294">Estudante (1) ── (0..*) BonusMeta · bônus de metas atribuídos.</text>
+    <text class="relacao" x="892" y="326">Estudante (1) ── (0..*) ResumoSemanal · resumos associados à conta.</text>
+    <text class="relacao" x="892" y="358">Todas as Models listadas herdam o id e o CRUD comum de CrudModel.</text>
+    <text class="relacao" x="892" y="390">Cada Model é também uma subclasse de db.Model do SQLAlchemy.</text>
+    <text class="relacao" x="892" y="422">◆ indica composição: Estudo depende da Agenda (agenda_id obrigatório).</text>
+    <line class="separador" x1="28" y1="458" x2="1692" y2="458"/>
+    <text class="nome" x="32" y="496" font-size="18">Correspondência com o sistema</text>
+    <text class="relacao" x="32" y="530">• Estudante e Pet representam contas, evolução, XP e pet equipado.</text>
+    <text class="relacao" x="32" y="562">• Agenda e Estudo armazenam atividades programadas, conclusão, duração, XP e lembretes.</text>
+    <text class="relacao" x="32" y="594">• SessaoFoco e Materia registram sessões de foco e sua classificação opcional por matéria.</text>
+    <text class="relacao" x="32" y="626">• ListaBloqueada, BlocoNotas e Nota apoiam bloqueio de sites e anotações.</text>
+    <text class="relacao" x="32" y="658">• MetaEstudo, BonusMeta e ResumoSemanal representam metas, bônus e acompanhamento.</text>
+    <text class="relacao" x="32" y="704">Observação: estudante_id de Pet é opcional para permitir pets de catálogo; a FK de pet equipado</text>
+    <text class="relacao" x="32" y="730">não garante, por si só, que o pet apontado pertença ao mesmo estudante.</text>
+    <text class="subtitulo" x="32" y="780">Fonte: backend/models/*.py · atributos calculados e constantes de catálogo foram omitidos.</text>
+  </g>
+</svg>

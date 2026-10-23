@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meu perfil - Study Buddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <div class="site-brand-container">
+            <a class="site-brand" href="/" aria-label="Study Buddy - início">
+                <span class="site-brand-mark" aria-hidden="true">S</span>
+                <span>Study Buddy</span>
+            </a>
+            <span class="site-version">Versão 1.1.2</span>
+        </div>
+        <div class="site-links">
+            <a href="/">Início</a>
+            <a href="/agenda">Agenda</a>
+            <a href="/materias">Matérias</a>
+            <a href="/historico-foco">Histórico</a>
+            <a href="/metas">Metas</a>
+            <a href="/resumo">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+            <a class="account-link" href="/perfil" aria-current="page" aria-label="Meu perfil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+                <span>Perfil</span>
+            </a>
+            <a id="logoutBtn" class="logout-btn" href="/login">Sair</a>
+            <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+    <section class="perfil-page" aria-labelledby="perfilTitulo">
+        <p class="eyebrow">Sua conta</p>
+        <h1 id="perfilTitulo">Editar perfil</h1>
+        <p>Atualize suas informações da conta.</p>
+        <form id="perfilForm" class="perfil-form">
+            <div class="perfil-avatar perfil-avatar-edicao" role="img" aria-label="Foto de perfil atual">
+                <span id="perfilIniciais">—</span>
+                <img id="perfilFotoAtual" alt="Foto de perfil atual" hidden>
+            </div>
+            <label for="perfilNome">Nome de usuário</label>
+            <input id="perfilNome" name="nome" type="text" maxlength="120" required>
+            <label for="perfilEmail">Email</label>
+            <input id="perfilEmail" name="email" type="email" maxlength="120" autocomplete="email" required>
+            <label for="perfilSenhaAtual">Senha atual (necessária para alterar a senha)</label>
+            <div class="password-input-wrap">
+                <input id="perfilSenhaAtual" type="password" autocomplete="current-password" data-profile-password>
+                <button class="password-toggle" type="button" aria-label="Mostrar senha atual" aria-pressed="false" data-password-toggle="perfilSenhaAtual">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+            <label for="perfilNovaSenha">Nova senha (deixe em branco para não alterar)</label>
+            <div class="password-input-wrap">
+                <input id="perfilNovaSenha" type="password" autocomplete="new-password" aria-describedby="perfilSenhaRequisitos" data-profile-password>
+                <button class="password-toggle" type="button" aria-label="Mostrar nova senha" aria-pressed="false" data-password-toggle="perfilNovaSenha">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+            <small id="perfilSenhaRequisitos" class="perfil-ajuda">Use ao menos 12 caracteres, com maiúscula, minúscula, número e símbolo.</small>
+            <label for="perfilConfirmarSenha">Confirme a nova senha</label>
+            <div class="password-input-wrap">
+                <input id="perfilConfirmarSenha" type="password" autocomplete="new-password" data-profile-password>
+                <button class="password-toggle" type="button" aria-label="Mostrar confirmação da senha" aria-pressed="false" data-password-toggle="perfilConfirmarSenha">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+            <label for="perfilFoto">Nova foto (PNG, JPEG ou WebP; até 5 MB)</label>
+            <input id="perfilFoto" name="foto_perfil" type="file" accept="image/png,image/jpeg,image/webp">
+            <label class="remover-foto-opcao">
+                <input id="removerFoto" name="remover_foto" type="checkbox">
+                Remover minha foto atual
+            </label>
+            <p id="perfilMensagem" class="agenda-mensagem" role="status" aria-live="polite"></p>
+            <div class="perfil-form-acoes">
+                <a class="panel-link" href="/">Cancelar</a>
+                <button class="notas-btn" type="submit">Salvar alterações</button>
+            </div>
+        </form>
+    </section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/perfil.js"></script>
+</body>
+</html>

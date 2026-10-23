@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro - Study Buddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/1style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Navegação principal">
+        <div class="site-brand-container">
+          <a class="site-brand" href="/" aria-label="Study Buddy - início">
+            <span class="site-brand-mark" aria-hidden="true">S</span>
+            <span>Study Buddy</span>
+          </a>
+          <span class="site-version">Versão 1.1.2</span>
+        </div>
+        <div class="site-links">
+          <a href="/">Início</a>
+          <a href="/agenda">Agenda</a>
+          <a href="/resumo">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+          <a id="loginBtn" class="account-link" href="/login" aria-label="Entrar">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+            </svg>
+            <span>Entrar</span>
+          </a>
+          <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+      </nav>
+    </header>
+    <main class="auth-page">
+      <div class="auth-layout">
+        <aside class="auth-art">
+          <div class="auth-art-brand">
+            <span class="auth-art-mark" aria-hidden="true">S</span>
+            <span>STUDY BUDDY</span>
+          </div>
+          <div class="auth-art-pet">
+            <img src="/static/img/elekid%20base%20grup1.png" alt="Elekid, mascote do Study Buddy">
+          </div>
+          <div class="auth-art-copy">
+            <span class="auth-eyebrow">UM NOVO COMEÇO</span>
+            <h2>Construa seu ritmo.</h2>
+            <p>Crie seu espaço e comece no seu tempo.</p>
+          </div>
+        </aside>
+
+        <section class="auth-card cadastro-card" aria-labelledby="cadastroTitulo">
+          <div class="auth-card-heading">
+            <span class="auth-eyebrow">CRIE SEU PERFIL</span>
+            <h1 id="cadastroTitulo">Criar conta</h1>
+            <p>Seus dados acompanham sua jornada.</p>
+          </div>
+          <form id="cadastroForm" class="auth-form">
+            <div class="auth-field">
+              <label for="nomeCadastro">Nome de usuário</label>
+              <input id="nomeCadastro" type="text" name="nome" maxlength="120" autocomplete="name" placeholder="Como devemos chamar você?" required>
+            </div>
+            <div class="auth-field">
+              <label for="fotoPerfilCadastro">Foto de perfil <span>Opcional</span></label>
+              <input id="fotoPerfilCadastro" type="file" name="foto_perfil" accept="image/png,image/jpeg,image/webp">
+              <div class="foto-preview" id="fotoPreviewBox" hidden>
+                <img id="fotoPreview" alt="Prévia da foto de perfil">
+              </div>
+            </div>
+            <div class="auth-field">
+              <label for="cadastroEmail">Email</label>
+              <input id="cadastroEmail" type="email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+            </div>
+            <div class="auth-field">
+              <label for="cadastroSenha">Senha</label>
+              <div class="password-input-wrap">
+                <input id="cadastroSenha" type="password" name="senha" autocomplete="new-password" aria-describedby="senhaRequisitos" placeholder="Crie uma senha segura" required>
+                <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" data-password-toggle="cadastroSenha">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <ul id="senhaRequisitos" class="senha-requisitos" aria-live="polite">
+                <li data-requisito="tamanho">12 caracteres</li>
+                <li data-requisito="maiuscula">Uma letra maiúscula</li>
+                <li data-requisito="minuscula">Uma letra minúscula</li>
+                <li data-requisito="numero">Um número</li>
+                <li data-requisito="simbolo">Um símbolo especial</li>
+              </ul>
+            </div>
+            <div class="auth-field">
+              <p id="captchaLabel" class="auth-eyebrow">Verificação antirobô</p>
+              <div id="turnstileWidget" role="group" aria-labelledby="captchaLabel"></div>
+              <p id="captchaMensagem" class="auth-message" role="status" aria-live="polite"></p>
+            </div>
+            <button id="cadastroSubmit" type="submit" class="auth-submit" disabled>Criar minha conta</button>
+          </form>
+          <p id="authMensagem" class="auth-message" role="status" aria-live="polite"></p>
+          <div class="auth-links">
+            <span>Já tem uma conta?</span>
+            <a href="/login">Entrar</a>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/auth.js"></script>
+  </body>
+</html>

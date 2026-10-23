@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metas de estudo - Study Buddy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/1style.css">
+</head>
+<body>
+<header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+        <div class="site-brand-container">
+            <a class="site-brand" href="/" aria-label="Study Buddy - início">
+                <span class="site-brand-mark" aria-hidden="true">S</span>
+                <span>Study Buddy</span>
+            </a>
+            <span class="site-version">Versão 1.1.2</span>
+        </div>
+        <div class="site-links">
+            <a href="/">Início</a>
+            <a href="/agenda">Agenda</a>
+            <a href="/materias">Matérias</a>
+            <a href="/historico-foco">Histórico</a>
+            <a href="/metas" aria-current="page">Metas</a>
+            <a href="/resumo">Resumo semanal</a>
+        </div>
+        <div class="site-actions">
+            <a class="account-link" href="/perfil" aria-label="Meu perfil">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+                </svg>
+                <span>Perfil</span>
+            </a>
+            <a id="logoutBtn" class="logout-btn" href="/login">Sair</a>
+            <button id="temaBtn" class="theme-button" type="button" aria-label="Alternar tema">☀️</button>
+        </div>
+    </nav>
+</header>
+<main class="page-content">
+    <section class="metas-page" aria-labelledby="metasTitulo">
+        <p class="eyebrow">Crie constância</p>
+        <h1 id="metasTitulo">Metas de estudo</h1>
+        <p class="metas-intro">Escolha uma meta diária em minutos ou horas, ou uma meta semanal em horas ou dias com sessão de foco concluída.</p>
+
+        <form id="metasForm" class="metas-form">
+            <div class="meta-config-card">
+                <label for="metaDiaria">Meta diária</label>
+                <input id="metaDiaria" type="number" min="0" max="1440" step="1" value="0">
+                <label class="meta-unit-label" for="metaDiariaUnidade">Unidade</label>
+                <select id="metaDiariaUnidade">
+                    <option value="minutos">Minutos</option>
+                    <option value="horas">Horas</option>
+                </select>
+                <small>Use 0 para desativar. A meta diária máxima é 24 horas.</small>
+            </div>
+            <div class="meta-config-card">
+                <label for="metaSemanal">Meta semanal</label>
+                <input id="metaSemanal" type="number" min="0" max="10080" step="1" value="0">
+                <label class="meta-unit-label" for="metaSemanalUnidade">Unidade</label>
+                <select id="metaSemanalUnidade">
+                    <option value="horas">Horas</option>
+                    <option value="dias">Dias estudados</option>
+                </select>
+                <small id="metaSemanalAjuda">Use 0 para desativar. A meta semanal máxima é 168 horas.</small>
+            </div>
+            <button id="salvarMetasBtn" class="notas-btn" type="submit">Salvar metas</button>
+        </form>
+        <p class="meta-bonus-nota">Metas de tempo concedem +10 XP por hora, até o limite de +20 XP. Metas semanais em dias concedem +10 XP por dia definido, também limitadas a +20 XP. Cada bônus é concedido uma única vez por período.</p>
+        <p id="metasMensagem" class="agenda-mensagem" role="status" aria-live="polite"></p>
+
+        <div class="metas-progresso">
+            <article class="meta-progresso-card">
+                <div class="meta-progresso-titulo">
+                    <h2>Hoje</h2>
+                    <span id="metaDiariaStatus">Carregando...</span>
+                </div>
+                <p id="metaDiariaTexto">—</p>
+                <progress id="metaDiariaBarra" max="100" value="0" aria-label="Progresso da meta diária"></progress>
+                <strong id="metaDiariaBonus">—</strong>
+            </article>
+            <article class="meta-progresso-card">
+                <div class="meta-progresso-titulo">
+                    <h2>Esta semana</h2>
+                    <span id="metaSemanalStatus">Carregando...</span>
+                </div>
+                <p id="metaSemanalTexto">—</p>
+                <progress id="metaSemanalBarra" max="100" value="0" aria-label="Progresso da meta semanal"></progress>
+                <strong id="metaSemanalBonus">—</strong>
+            </article>
+        </div>
+        <a class="panel-link summary-back" href="/">Voltar ao início</a>
+    </section>
+</main>
+<script src="/static/js/script.js"></script>
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/metas.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Study Buddy Blocker",
+  "version": "1.1.2",
+  "description": "Bloqueador de sites para Study Buddy - Mantenha o foco durante sessões de estudo",
+  "author": "Study Buddy Team",
+  
+  "permissions": [
+    "webNavigation",
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  
+  "action": {
+    "default_title": "Study Buddy Blocker",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["bloqueado.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "omnibox": {
+    "keyword": "studybuddy"
+  }
+}
