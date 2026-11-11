@@ -1,0 +1,10 @@
+.env*
+*.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.db
+*.db-*
+*.bak
+instance/profile_photos/
